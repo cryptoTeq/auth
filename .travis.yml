@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 16
+
+install:
+  - npm ci
+
+script:
+  - npm test
