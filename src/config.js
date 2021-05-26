@@ -1,3 +1,7 @@
 export default {
   PORT: process.env.PORT || 3000,
+
+  ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
+  ACCESS_TOKEN_EXPIRATION_MIN: 60 * 5,
+  REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
 };
