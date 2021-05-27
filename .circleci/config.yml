@@ -26,11 +26,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Installing Dependencies
-          command: npm i
+          name: Deploy to AppEngine
+          command: echo Done
+
 workflows:
   version: 2
-  build_test_:
+  build_test_workflow:
     jobs:
       - build_test
       - deploy_app_eng:
