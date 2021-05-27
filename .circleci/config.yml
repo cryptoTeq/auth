@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Running Tests
           command: npm t
-    build_test:
+    deploy:
       docker:
         - image: cimg/node:14.10.1
           auth:
