@@ -8,4 +8,24 @@ jobs:
           password: $DOCKER_HUB_PASSWORD
     steps:
       - checkout
-      - run: echo "Mellow World"
+      - run:
+        name: Compiling
+        command: npm i
+        command: npm run build
+  test:
+    docker:
+      - image: cimg/node:14.10.1
+        auth:
+          username: hypbox
+          password: $DOCKER_HUB_PASSWORD
+    steps:
+      - checkout
+      - run:
+        name: Running Tests
+        command: npm t
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
