@@ -19,5 +19,5 @@ const usersPrefrencesDb = {
   },
 };
 
-export const userByEmail = async (email) => usersDb[email];
-export const prefByUserId = async (userId) => usersPrefrencesDb[userId];
+export const userBy = async ({ email, password }) => usersDb[email];
+export const prefBy = async (userId) => usersPrefrencesDb[userId];
