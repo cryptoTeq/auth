@@ -34,4 +34,6 @@ workflows:
   build_test_workflow:
     jobs:
       - build_test
-      - deploy_app_eng
+      - deploy_app_eng:
+          requires:
+            - build_test
