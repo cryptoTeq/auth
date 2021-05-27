@@ -3,9 +3,9 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.10.1
-      auth:
-        username: hypbox
-        password: $DOCKER_HUB_PASSWORD
+        auth:
+          username: hypbox
+          password: $DOCKER_HUB_PASSWORD
     steps:
-    - checkout
-    - run: echo "Mellow World"
+      - checkout
+      - run: echo "Mellow World"
