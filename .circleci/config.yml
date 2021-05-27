@@ -8,6 +8,12 @@ jobs:
           password: $DOCKER_HUB_PASSWORD
     steps:
       - checkout
-      - run: npm i
-      - run: npm run build
-      - run: npm t
+      - run:
+          name: Installing Dependencies
+          command: npm i
+      - run:
+          name: Building
+          command: npm run build
+      - run:
+          name: Running Tests
+          command: npm t
