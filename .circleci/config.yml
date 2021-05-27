@@ -17,14 +17,14 @@ jobs:
       - run:
           name: Running Tests
           command: npm t
-    deploy:
-      docker:
-        - image: cimg/node:14.10.1
-          auth:
-            username: hypbox
-            password: $DOCKER_HUB_PASSWORD
-      steps:
-        - checkout
-        - run:
-            name: Installing Dependencies
-            command: npm i
+  deploy:
+    docker:
+      - image: cimg/node:14.10.1
+        auth:
+          username: hypbox
+          password: $DOCKER_HUB_PASSWORD
+    steps:
+      - checkout
+      - run:
+          name: Installing Dependencies
+          command: npm i
