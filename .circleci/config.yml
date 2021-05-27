@@ -28,3 +28,11 @@ jobs:
       - run:
           name: Installing Dependencies
           command: npm i
+workflows:
+  version: 2
+  build_test_:
+    jobs:
+      - build_test
+      - deploy_app_eng:
+          requires:
+            - build_test
