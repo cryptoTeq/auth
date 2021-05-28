@@ -25,11 +25,9 @@ jobs:
           password: $DOCKER_HUB_PASSWORD
     steps:
       - checkout
-      - when:
-          condition:
-            equal: [master, << pipeline.git.branch >>]
-          steps:
-            - run: echo "I am on mastero"
+      - run:
+        name: Deploying to GCP
+        command: echo "I am on mastero"
 
 workflows:
   version: 2
@@ -37,5 +35,8 @@ workflows:
     jobs:
       - build_test
       - deploy_to_staging:
-          requires:
-            - build_test
+          - when:
+              condition:
+                equal: [master, << pipeline.git.branch >>]
+            requires:
+              - build_test
