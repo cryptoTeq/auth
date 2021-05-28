@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Running Tests
           command: npm t
-  deploy_app_eng:
+  deploy_to_staging:
     docker:
       - image: cimg/node:14.10.1
         auth:
@@ -25,15 +25,17 @@ jobs:
           password: $DOCKER_HUB_PASSWORD
     steps:
       - checkout
-      - run:
-          name: Deploy to AppEngine
-          command: echo Done
+      - when:
+          condition:
+            equal: [master, << pipeline.git.branch >>]
+          steps:
+            - run: echo "I am on master"
 
 workflows:
   version: 2
   build_test_workflow:
     jobs:
       - build_test
-      - deploy_app_eng:
+      - deploy_to_staging:
           requires:
             - build_test
