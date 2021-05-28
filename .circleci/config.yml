@@ -26,12 +26,16 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Deploying to GCP
-        command: echo "I am on mastero"
+          name: Deploying to GCP
+          command: echo "I am on mastero"
 
 workflows:
   version: 2
   build_test_workflow:
     jobs:
       - build_test
-      - deploy_to_staging
+      - deploy_to_staging:
+          when:
+            equal: [master, << pipeline.git.branch >>]
+          requires:
+            - build_test
