@@ -1,10 +1,21 @@
+import { mockAll } from "../mocks";
 import { userBy } from "./users.service";
 
-test("returns user by email", async () => {
-  const user = await userBy({
-    email: "amir.zad@contractika.com",
-    password: "myPassword",
-  });
-  expect(user.email).toBe("amir.zad@contractika.com");
-  expect(user.firstName).toBe("Amir Mohsen");
+beforeAll(async () => {
+  mockAll();
+});
+
+const user = {
+  username: "USERNAME",
+  email: "NAME.LAST@DOMAIN.com",
+  password: "PASSWORD",
+  firstName: "FIRSTNAME",
+  lastName: "LASTNAME",
+};
+
+test("returns user by email and password", async () => {
+  const { email, password, firstName } = user;
+  const fetchUser = await userBy({ email, password });
+  expect(fetchUser.email).toBe(email);
+  expect(fetchUser.firstName).toBe(firstName);
 });
