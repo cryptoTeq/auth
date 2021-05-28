@@ -32,7 +32,6 @@ jobs:
 workflows:
   version: 2
   build_test_workflow:
-    name: Build and Test Workflow
     jobs:
       - build_test
 
