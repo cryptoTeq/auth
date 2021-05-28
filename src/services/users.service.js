@@ -23,8 +23,9 @@ const usersPrefrencesDb = {
 
 //export const userBy = async ({ email, password }) => usersDb[email];
 export const userBy = async ({ email, password }) => {
-  const { data } = await axios.get(`/backend/users`, {
-    params: { email },
+  const { data } = await axios.post(`/backend/users`, {
+    email,
+    password,
   });
   return data;
 };
