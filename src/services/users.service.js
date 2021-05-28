@@ -1,3 +1,5 @@
+const axios = require("axios").default;
+
 const usersDb = {
   "amir.zad@contractika.com": {
     id: "4bfcfa19-6d00-4a23-8549-d5cf55f4a0ff",
@@ -19,5 +21,11 @@ const usersPrefrencesDb = {
   },
 };
 
-export const userBy = async ({ email, password }) => usersDb[email];
+//export const userBy = async ({ email, password }) => usersDb[email];
+export const userBy = async ({ email, password }) => {
+  const { data } = await axios.get(`/backend/users`, {
+    params: { email },
+  });
+  return data;
+};
 export const prefBy = async (userId) => usersPrefrencesDb[userId];
