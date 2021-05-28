@@ -35,7 +35,5 @@ workflows:
     jobs:
       - build_test
       - deploy_to_staging:
-          when:
-            equal: [master, << pipeline.git.branch >>]
           requires:
             - build_test
